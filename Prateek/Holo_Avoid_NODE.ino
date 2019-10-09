@@ -45,12 +45,20 @@ void setup()
   pinMode(s4,OUTPUT);
   
   // Attach interrupt 
-  attachInterrupt(digitalPinToInterrupt(18), updateEncoder, CHANGE);
-  attachInterrupt(digitalPinToInterrupt(19), updateEncoder, CHANGE);
+  attachInterrupt(digitalPinToInterrupt(18), updateEncoder, RISING);
+  attachInterrupt(digitalPinToInterrupt(19), updateEncoder, RISING);
 }
  
 void loop()
 {
+  for(int i=1;i<4;i++)
+ {
+    int d_x=arr[i][1]-arr[i-1][1];
+    int d_y=arr[i][2]-arr[i-1][2];
+    int angle=atan2(d_y,d_x);
+    d_x=map((90-angle),-90,90,-255,255);
+    d_y=map(angle,-90,90,255,-255);
+ }
    func_want(d_x,d_y);
 }
  
@@ -85,14 +93,6 @@ void updateEncoder()
     encY--;
     encoderValueY=0;
   }
- for(int i=1;i<4;i++)
- {
-    int d_x=arr[i][1]-arr[i-1][1];
-    int d_y=arr[i][2]-arr[i-1][2];
-    int angle=atan2(d_y,d_x);
-    d_x=map((90-angle),-90,90,-255,255);
-    d_y=map(angle,-90,90,255,-255);
- }
 }
 void func_want(int x,int y)
 {
