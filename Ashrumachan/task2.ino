@@ -35,8 +35,16 @@ void loop()
     x_val = arr[1][0] - x_counter;
     y_val = arr[1][1] - y_counter;
     angle = atan2(y_val, x_val);
+    
+    if(angle==45){
+    x_motion =255;
+    y_motion =255;
+    }
+    else 
+    {
     x_motion = map((90 - angle), -90, 90, -255, 255);
     y_motion = map(angle, -90, 90, -255, 255);
+    }
     motion(x_motion, y_motion);
   }
 }
