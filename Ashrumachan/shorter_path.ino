@@ -49,7 +49,7 @@ void loop()
     {
       x_val = arr[i][0] - x_counter;
       y_val = arr[i][1] - y_counter;
-      angle = atan2(y_val, x_val);
+      angle = atan(y_val, x_val);
       x_motion = map((90 - angle), -90, 90, -255, 255);
       y_motion = map(angle, -90, 90, -255, 255);
       motion(x_motion, y_motion);
