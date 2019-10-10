@@ -66,14 +66,13 @@ void func1() {
 }
 void motion(int x_motion, int y_motion)
 {
-  X_motion = x_motion ;
-  Y_motion = y_motion ;
+
 
   sf = 1;
-  s1 = sf * (0.1768 * X_motion + 0.1768 * Y_motion + 0.25 * w);
-  s2 = sf * (0.1768 * X_motion + 0.1768 * Y_motion + 0.25 * w);
-  s3 = sf * (-0.1768 * X_motion - 0.1768 *  Y_motion + 0.25 * w);
-  s4 = sf * (-0.1768 * X_motion - 0.1768 * Y_motion + 0.25 * w);
+  s1 = sf * (0.1768 * x_motion + 0.1768 * y_motion + 0.25 * w);
+  s2 = sf * (0.1768 * x_motion + 0.1768 * y_motion + 0.25 * w);
+  s3 = sf * (-0.1768 * x_motion - 0.1768 *  y_motion + 0.25 * w);
+  s4 = sf * (-0.1768 * x_motion - 0.1768 * y_motion + 0.25 * w);
   d_1 = (s1 > 0 ? 1 : 0);
   d_2 = (s2 > 0 ? 1 : 0);
   d_3 = (s3 > 0 ? 1 : 0);
