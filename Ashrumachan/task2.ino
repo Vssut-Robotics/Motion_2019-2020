@@ -8,7 +8,7 @@ volatile int enc2_val = 0;
 int x_counter, x_motion, y_counter, y_motion, X_motion, Y_motion, x_val, y_val, arr[2][2] = {{0, 0}, {10, 10}};
 int d_1, d_2, d_3, d_4;
 int s1, s2, s3, s4;
-int count = 0, sf = 1, w = 0;
+int count = 0, sf = 1, w = 0,angle;
 void setup() {
   pinMode(enc_11, INPUT);
   digitalWrite(enc_11, HIGH);
@@ -28,19 +28,17 @@ void setup() {
 
 void loop()
 {
-  Serial.print(enc1_val);
-  Serial.print("   ");
-  Serial.print(enc2_val);
-  Serial.print("   ");
   x_counter = enc1_val / 100;
   y_counter = enc2_val / 100;
-
-  x_val = arr[1][0] - arr[0][0];
-  y_val = arr[1][1] - arr[0][1];
-  x_motion = map(x_motion, -x_val, x_val, 0, 255);
-  y_motion = map(y_motion, -y_val, y_val, 0, 255);
-  motion(x_motion, y_motion);
-
+  while (x_counter != arr[1][0] && y_counter != arr[1][1])
+  {
+    x_val = arr[1][0] - x_counter;
+    y_val = arr[1][1] - y_counter;
+    angle = atan2(y_val, x_val);
+    x_motion = map((90 - angle), -90, 90, -255, 255);
+    y_motion = map(angle, -90, 90, -255, 255);
+    motion(x_motion, y_motion);
+  }
 }
 
 
