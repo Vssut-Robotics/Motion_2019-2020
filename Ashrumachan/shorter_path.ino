@@ -9,7 +9,7 @@ int count = 0, sf = 1, w = 0,angle;
 int x_val, y_val, x_motion, y_motion,x,y;
 volatile int c = 0;
 volatile int c1 = 0;
-int x_counter, y_counter, arr[4][2] = {{0, 0}, {10, 8}, {12, 8}, {20, 20}};
+int x_counter=0, y_counter=0,x_count,y_count, arr[4][2] = {{0, 0}, {10, 8}, {12, 8}, {20, 20}};
 void motion(int x_val, int y_val);
 void setup() {
   pinMode(a, INPUT);
@@ -40,8 +40,10 @@ void setup() {
 
 void loop()
 {
-  x_counter = c / 100;
-  y_counter = c1 / 100;
+  x_count= c / 100;
+  x_counter = x_counter+x_count;
+  y_count= c1 / 100;
+  y_counter = y_counter+y_count;
 
   for (int i = 1; i <= 3; i++)
   {
@@ -54,6 +56,8 @@ void loop()
       y_motion = map(angle, -90, 90, -255, 255);
       motion(x_motion, y_motion);
     }
+    c=0;
+    c1=0;
   }
 }
 
