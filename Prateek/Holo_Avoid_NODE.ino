@@ -14,8 +14,15 @@ void func_want(int d_x, int d_y);
 //final coordinate
 int p = 20;  //(20,20)
 
+//coordinate of object
+int obj1_x = 2, obj1_y = 2; //object 1 at coordinate (2,2)
+int obj2_x = 3, obj2_y = 3; //object 2 at coordinate (3,3)
+int obj3_x = 4, obj3_y = 4; //object 3 at coordinate (4,4)
+int obj4_x = 5, obj4_y = 5; //object 4 at coordinate (5,5)
+int obj5_x = 6, obj5_y = 6; //object 5 at coordinate (6,6)
+
 //if you remove all coordinates except 1st and last then it will take u to one pos to other in shortest path
-int arr[4][2] = {{0, 0}, {p / 2 - 2, p / 2 - 2}, {p / 2 - 2, p / 2}, {p, p}};
+int arr[7][2] = {{0, 0}, {obj1_x - 2, obj1_y}, {obj2_x - 2, obj2_y}, {obj3_x - 2, obj3_y}, {obj4_x - 2, obj4_y}, {obj5_x - 2, obj5_y}, {p, p}};
 
 int s1 = 23, s2 = 25, s3 = 27, s4 = 29;
 int s_1, s_2, s_3, s_4;
