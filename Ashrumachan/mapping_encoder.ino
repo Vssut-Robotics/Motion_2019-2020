@@ -3,7 +3,7 @@
 #define enc_21 3
 #define enc_22 5
 
-volatile int enc1_val = 0;
+volatile int enc1_val = 0
 volatile int enc2_val = 0;
 int x_counter,x_motion,y_counter,y_motion;
 void setup() {
